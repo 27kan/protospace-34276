@@ -1,0 +1,19 @@
+<main class="main">
+  <div class="inner">
+    <% if user_signed_in? %>
+      <%# ログインしているときは以下を表示する %>
+      <div class="greeting">
+        こんにちは
+        <%= link_to "#{current_user.name}", user_path(current_user.id), class: :greeting__link%>
+        さん
+      </div> 
+    <% end %>
+    <div class="card__wrapper">
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <%= render partial: "prototype", collection: @prototypes %>
+      <%# 今回のつまづき② %>
+      <%# renderのcollectionオプションを使う時は、partialを記載しないとエラーになる %>
+      <%# 今回ずっとsyntaxエラーが出ていたが、partialを書き忘れていたから！！！！%>
+    </div>
+  </div>
+</main>
